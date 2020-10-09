@@ -175,6 +175,12 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+        /* 
+        Custom Location Provider gotten from
+        https://github.com/stevebauman/location
+        */
+        Stevebauman\Location\LocationServiceProvider::class,
+
     ],
 
     /*

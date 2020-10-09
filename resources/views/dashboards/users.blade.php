@@ -1,3 +1,14 @@
+<?php 
+  use App\Locations;
+  use App\Crime;
+  use App\Category;
+
+  $crime = Crime::orderBy('id', 'desc')->get();;
+  $cats = Category::orderBy('id', 'desc')->get();
+  $Locations = Locations::orderBy('id', 'desc')->get();
+  
+?>
+
 @extends('layouts.app')
 @section('content')
 <div class="row page-title-header">
@@ -51,9 +62,9 @@
       </div>
     </div>
   </div>
-  @include('components.stats')
-  @include('components.activities')
-  @include('components.reports')
+  @include('components.stats', ['crimes'=>$crime, 'locations'=>$locations, 'cats'=>$cats])
+  @include('components.activities', ['crimes'=>$crime, 'locations'=>$locations, 'cats'=>$cats])
+  {{-- @include('components.reports') --}}
   
 
 @endsection

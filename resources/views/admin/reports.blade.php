@@ -40,8 +40,8 @@
         <div class="col-md-12 grid-margin">
           <div class="card">
             <div class="card-body">
-                    <h4 class="card-title">Striped Table</h4>
-                    <p class="card-description"> Add class <code>.table-striped</code> </p>
+                    <h4 class="card-title">Happening Now</h4>
+                    <p class="card-description"> Current Crime log </p>
                     <table class="table table-striped">
                       <thead>
                         <tr>

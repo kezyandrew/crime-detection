@@ -55,7 +55,7 @@
       </div>
     </div>
   </div>
-  @include('admin.reports')
+  @include('admin.reports', ['categories'=>$categories, 'crimes'=>$crimes, 'locations'=>$locations])
   
   
 

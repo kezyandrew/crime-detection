@@ -17,8 +17,10 @@ class CreateLocationsTable extends Migration
         Schema::create('locations', function (Blueprint $table) {
             $table->id();
             $table->string('location');
-            $table->string('log')->nallable();
-            $table->string('lat')->nallable();
+            $table->string('country');
+            $table->string('ip');
+            $table->string('long');
+            $table->string('lat');
             $table->string('created_By');
             $table->timestamps();
         });

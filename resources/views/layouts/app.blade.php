@@ -63,6 +63,31 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 </head>
 <body>
+
+    <?php
+        use App\Locations;
+        $loc = Location::get();
+        if(Auth::user()->location){
+           /**
+            * The user is logged in Currently
+            *
+             */
+        }else{
+            Auth::user()->location = $loc->regionName;
+            Auth::user()->country = $loc->countryName;
+            $_ = new Locations;
+            
+            $_->ip = $loc->ip;
+            $_->location = $loc->regionName;
+            $_->country = $loc->countryName;
+            $_->long = $loc->longitude;
+            $_->lat = $loc->latitude;
+            $_->created_By = Auth::user()->email;
+
+            $_->save();
+            // return print_r($loc);
+        }
+    ?>
     <div class="container-scroller">
         @include('inc.topbar')
         <div class="container-fluid page-body-wrapper">

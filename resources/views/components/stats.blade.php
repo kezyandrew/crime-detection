@@ -32,7 +32,7 @@
               <div class="d-flex">
                 <div class="wrapper">
                   <h3 class="mb-0 font-weight-semibold">{{ count($locations) }}</h3>
-                  <h5 class="mb-0 font-weight-medium text-primary">{{  }}</h5>
+                  <h5 class="mb-0 font-weight-medium text-primary">{{ 0 }}</h5>
                   <p class="mb-0 text-muted">visited</p>
                 </div>
                 <div class="wrapper my-auto ml-auto ml-lg-4">

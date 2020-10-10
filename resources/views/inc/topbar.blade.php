@@ -7,7 +7,7 @@
 </div>
 <div class="navbar-menu-wrapper d-flex align-items-center">
     <ul class="navbar-nav">
-    <li class="nav-item font-weight-semibold d-none d-lg-block">Police : 0800 199 399</li>
+    <li class="nav-item font-weight-semibold d-none d-lg-block">Location Detected : {{ Auth::user()->location }}</li>
     <li class="nav-item dropdown language-dropdown">
         <a class="nav-link dropdown-toggle px-2 d-flex align-items-center" id="LanguageDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
         <div class="d-inline-flex mr-0 mr-md-3">

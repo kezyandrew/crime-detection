@@ -60,7 +60,7 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
   </head>
 <body>
-      
+      <?php $loc = Location::get(); ?>
         
     @yield('content')
     

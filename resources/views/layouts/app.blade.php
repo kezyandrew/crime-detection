@@ -66,6 +66,7 @@
 
     <?php
         use App\Locations;
+        $ip = $_SERVER['REMOTE_ADDR'];
         $loc = Location::get();
         if(Auth::user()->location){
            /**
@@ -73,6 +74,7 @@
             *
              */
         }else{
+            
             Auth::user()->location = $loc->regionName;
             Auth::user()->country = $loc->countryName;
             $_ = new Locations;

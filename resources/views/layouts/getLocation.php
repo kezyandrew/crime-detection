@@ -18,3 +18,46 @@ if(!empty($_POST['latitude']) && !empty($_POST['longitude'])){
     //return address to ajax 
     echo $_POST['longitude']." ".$_POST['latitude'];
 }
+        $ip = $_SERVER['REMOTE_ADDR'];
+        $loc = Location::get();
+        $handle = curl_init();
+        $url = "https://www.googleapis.com/geolocation/v1/geolocate";
+        $data = array('key'=>'AIzaSyCPLH47HCDL8XPXXwEdaFLbTGPcg565HCY');
+
+        $options = array(
+            'http'=> array(
+                'header' => 'Content-type: application/x-www-form-urlencoded\r\n',
+                "method" => 'POST',
+                "content" => http_build_query($data)
+            )
+        );
+
+        $content = stream_context_create($options);
+        $result = file_get_contents($url, false, $content);
+        if($result === FALSE) { print_r('There has been an error in connection'); }
+        print_r([$result, $ip, $loc]);
+        // print_r(gettype($result));
+        // var_dump($result);
+        return null;
+
+
+//We gonna try to implement with 
+$ip = $_SERVER['REMOTE_ADDR'];
+$url = "http://api.ipstack.com/".$ip;
+        $data = array('access_key'=>'AIzaSyCPLH47HCDL8XPXXwEdaFLbTGPcg565HCY');
+
+        $options = array(
+            'http'=> array(
+                'header' => 'Content-type: application/x-www-form-urlencoded\r\n',
+                "method" => 'POST',
+                "content" => http_build_query($data)
+            )
+        );
+
+        $content = stream_context_create($options);
+        $result = file_get_contents($url, false, $content);
+        if($result === FALSE) { print_r('There has been an error in connection'); }
+        print_r([$result, $ip, $loc]);
+        // print_r(gettype($result));
+        // var_dump($result);
+        return null;

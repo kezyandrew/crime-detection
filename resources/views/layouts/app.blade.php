@@ -64,32 +64,29 @@
 </head>
 <body>
 
-    <?php
-        use App\Locations;
-        $ip = $_SERVER['REMOTE_ADDR'];
-        $loc = Location::get();
-        if(Auth::user()->location){
-           /**
-            * The user is logged in Currently
-            *
-             */
-        }else{
-            
-            Auth::user()->location = $loc->regionName;
-            Auth::user()->country = $loc->countryName;
-            $_ = new Locations;
-            
-            $_->ip = $loc->ip;
-            $_->location = $loc->regionName;
-            $_->country = $loc->countryName;
-            $_->long = $loc->longitude;
-            $_->lat = $loc->latitude;
-            $_->created_By = Auth::user()->email;
+    <?php 
+    $ip = $_SERVER['REMOTE_ADDR'];
+    $url = "http://api.ipstack.com/".$ip."?access_key=bf01f636b7ad6832e3e7a97ba16ccfab";
+        $data = array();
 
-            $_->save();
-            // return print_r($loc);
-        }
+        $options = array(
+            'http'=> array(
+                'header' => 'Content-type: application/x-www-form-urlencoded\r\n',
+                "method" => 'POST',
+                "content" => http_build_query($data)
+            )
+        );
+
+        $content = stream_context_create($options);
+        $result = file_get_contents($url, false, $content);
+        if($result === FALSE) { print_r('There has been an error in connection'); }
+        print_r([$result, $ip]);
+        // print_r(gettype($result));
+        // var_dump($result);
+        return null;
+
     ?>
+    
     <div class="container-scroller">
         @include('inc.topbar')
         <div class="container-fluid page-body-wrapper">

@@ -1,22 +1,37 @@
 <?php
   use App\Locations;
-  use App\Categories;
+  use App\Category;
   use App\Crime;
 
-  $Locs = Locations::where('created_By', Auth::user()->email)->paginate(4);
+  $Locs = Locations::where('created_By', Auth::user()->email)
+    ->paginate(4);
+
+  $crimes = Crime::orderBy('id', 'desc')
+    ->paginate(5);
+
+  $cats = Category::orderBy('id', 'desc')
+    ->paginate(5);
 ?>
 <div class="row">
     <div class="col-md-4 grid-margin stretch-card">
       <div class="card">
         <div class="card-body">
           <h4 class="card-title mb-0">Recent Crimes</h4>
-          <div class="d-flex py-2 border-bottom">
-            <div class="wrapper">
-              <small class="text-muted">Mar 14, 2019</small>
-              <p class="font-weight-semibold text-gray mb-0">Change in Directors</p>
-            </div>
-            <small class="text-muted ml-auto">View Details</small>
-          </div>
+
+          @if(count($crimes) > 0)
+            @foreach($crimes as $crime)
+              <div class="d-flex py-2 border-bottom">
+                <div class="wrapper">
+                  <small class="text-muted">{{ $crime->created_at }}</small>
+                  <p class="font-weight-semibold text-gray mb-0">{{ $crime->crime_name }}</p>
+                </div>
+                <small class="text-muted ml-auto">View Details</small>
+              </div>
+            @endforeach
+            {{ $crimes->links() }}
+            @else
+            <p class="font-weight-semibold text-gray mb-0">No Crimes Yets</p>
+          @endif
           
           {{-- <a class="d-block mt-5" href="#">Show all</a> --}}
         </div>

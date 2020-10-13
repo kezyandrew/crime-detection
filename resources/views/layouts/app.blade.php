@@ -78,6 +78,7 @@
         
         $_->location = $loc['city'];
         $_->country = $loc['country_name'];
+        $_->region = $loc['region_name'];
         $_->ip = $loc['ip'];
         $_->long = $loc['longitude'];
         $_->lat = $loc['latitude'];
@@ -85,6 +86,8 @@
         if($_->save()){
             Auth::user()->location = $loc['city'];
             Auth::user()->region = $loc['region_name'];
+            Auth::user()->long = $loc['longitude'];
+            Auth::user()->lat = $loc['latitude'];
         }
 
     }else{

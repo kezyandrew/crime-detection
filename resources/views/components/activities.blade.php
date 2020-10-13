@@ -1,3 +1,10 @@
+<?php
+  use App\Locations;
+  use App\Categories;
+  use App\Crime;
+
+  $Locs = Locations::where('created_By', Auth::user()->email)->paginate(4);
+?>
 <div class="row">
     <div class="col-md-4 grid-margin stretch-card">
       <div class="card">
@@ -23,10 +30,18 @@
             <p class="mb-0 text-muted">Your Travel history</p>
           </div>
           <ul class="timeline">
-            <li class="timeline-item">
-              <p class="timeline-content"><a href="#">Ben Tossell</a> assign you a task</p>
-              <p class="event-time">Just now</p>
-            </li>
+            @if(count($Locs) > 0)
+              @foreach ($Locs as $location)
+                  <li class="timeline-item">
+                    <p class="timeline-content"><a href="#">{{ $location->location }}</a> in {{ $location->region }} Region </p>
+                    <p class="event-time">Visited {{ $location->created_at }}</p>
+                  </li>
+              @endforeach
+              {{ $Locs->links() }}
+              @else
+                  No Location found yet
+            @endif
+            
 
           </ul>
           {{-- <a class="d-block mt-3" href="#">Show all</a> --}}

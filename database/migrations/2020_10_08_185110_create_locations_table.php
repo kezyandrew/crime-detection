@@ -16,12 +16,13 @@ class CreateLocationsTable extends Migration
     {
         Schema::create('locations', function (Blueprint $table) {
             $table->id();
-            $table->string('location');
-            $table->string('country');
-            $table->string('ip');
-            $table->string('long');
-            $table->string('lat');
-            $table->string('created_By');
+            $table->string('location')->nullable();
+            $table->string('country')->nullable();
+            $table->string('region')->nullable();
+            $table->string('ip')->nullable();
+            $table->string('long')->nullable();
+            $table->string('lat')->nullable();
+            $table->string('created_By')->nullable();
             $table->timestamps();
         });
     }

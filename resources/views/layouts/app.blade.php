@@ -65,25 +65,31 @@
 <body>
 
     <?php 
+    use Illuminate\Support\Facades\Http;
+    use App\Locations;
+    $_ = new Locations;
+
     $ip = $_SERVER['REMOTE_ADDR'];
     $url = "http://api.ipstack.com/".$ip."?access_key=bf01f636b7ad6832e3e7a97ba16ccfab";
-        $data = array();
+    $response = Http::get($url);
+    $loc = $response->json();
 
-        $options = array(
-            'http'=> array(
-                'header' => 'Content-type: application/x-www-form-urlencoded\r\n',
-                "method" => 'POST',
-                "content" => http_build_query($data)
-            )
-        );
+    if(!Auth::user()->location){
+        
+        $_->location = $loc['city'];
+        $_->country = $loc['country_name'];
+        $_->ip = $loc['ip'];
+        $_->long = $loc['longitude'];
+        $_->lat = $loc['latitude'];
+        $_->created_By = Auth::user()->email;
+        if($_->save()){
+            Auth::user()->location = $loc['city'];
+            Auth::user()->region = $loc['region_name'];
+        }
 
-        $content = stream_context_create($options);
-        $result = file_get_contents($url, false, $content);
-        if($result === FALSE) { print_r('There has been an error in connection'); }
-        print_r([$result, $ip]);
-        // print_r(gettype($result));
-        // var_dump($result);
-        return null;
+    }else{
+        //just a response 
+    }
 
     ?>
     

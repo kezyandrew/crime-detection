@@ -63,7 +63,8 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 </head>
 <body>
-        
+    
+    
     <div class="container-scroller">
         @include('inc.topbar')
         <div class="container-fluid page-body-wrapper">

@@ -10,8 +10,8 @@
     $response = Http::post($url);
     $loc = $response->json();
 
-    if($loc['region_name'] == ''){ $loc['region_name'] =='Undefined'; }
-    Auth::user()->location = $loc['region_name'];
+    if($loc['country_name'] == ''){ $loc['country_name'] =='Undefined'; }
+    Auth::user()->location = $loc['country_name'];
     
     // return print_r($loc);
 @endphp
@@ -25,23 +25,23 @@
 </div>
 <div class="navbar-menu-wrapper d-flex align-items-center">
     <ul class="navbar-nav">
-    <li class="nav-item font-weight-semibold d-none d-lg-block">Location Detected : {{ Auth::user()->location }}</li>
+    <li class="nav-item font-weight-semibold d-none d-lg-block">Location Detected : {{ $loc['region_name'] }}</li>
     <li class="nav-item dropdown language-dropdown">
         <a class="nav-link dropdown-toggle px-2 d-flex align-items-center" id="LanguageDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
-        <div class="d-inline-flex mr-0 mr-md-3">
+        {{-- <div class="d-inline-flex mr-0 mr-md-3">
             <div class="flag-icon-holder">
             <i class="flag-icon flag-icon-ug"></i>
             </div>
-        </div>
-        <span class="profile-text font-weight-medium d-none d-md-block">English</span>
+        </div> --}}
+        <span class="profile-text font-weight-medium d-none d-md-block">{{ $loc['country_name'] }}</span>
         </a>
-        <div class="dropdown-menu dropdown-menu-left navbar-dropdown py-2" aria-labelledby="LanguageDropdown">
+        {{-- <div class="dropdown-menu dropdown-menu-left navbar-dropdown py-2" aria-labelledby="LanguageDropdown">
         <a class="dropdown-item">
             <div class="flag-icon-holder">
             <i class="flag-icon flag-icon-us"></i>
             </div>English
         </a>
-        </div>
+        </div> --}}
     </li>
     </ul>
     <form class="ml-auto search-form d-none d-md-block" action="#">

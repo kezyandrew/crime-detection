@@ -10,10 +10,10 @@
     $response = Http::post($url);
     $loc = $response->json();
 
-    // if($loc['region_name'] == ''){ $loc['region_name'] =='Undefined'; }
-    // Auth::user()->location = $loc['region_name'];
+    if($loc['region_name'] == ''){ $loc['region_name'] =='Undefined'; }
+    Auth::user()->location = $loc['region_name'];
     
-    return print_r($loc);
+    // return print_r($loc);
 @endphp
 
 <nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex flex-row">

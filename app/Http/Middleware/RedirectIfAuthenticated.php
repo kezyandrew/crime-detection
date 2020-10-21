@@ -19,6 +19,11 @@ class RedirectIfAuthenticated
     public function handle($request, Closure $next, $guard = null)
     {
         if (Auth::guard($guard)->check()) {
+           Auth::user()->location = array(
+               'lat'=>null,
+               'long'=>null,
+               'country'=>'uganda'
+           );
             return redirect(RouteServiceProvider::HOME);
         }
 

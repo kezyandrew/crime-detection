@@ -63,37 +63,19 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 </head>
 <body>
-
     <?php 
-    use Illuminate\Support\Facades\Http;
-    use App\Locations;
-    $_ = new Locations;
+        use Illuminate\Support\Facades\Http;
+        use Illuminate\Support\Facades\Carbon;
+        use App\User;
+        use App\Locations;
+        $_ = new Locations;
 
-    $ip = $_SERVER['REMOTE_ADDR'];
-    $url = "http://api.ipstack.com/".$ip."?access_key=bf01f636b7ad6832e3e7a97ba16ccfab";
-    $response = Http::get($url);
-    $loc = $response->json();
-
-    if(!Auth::user()->location){
+        $ip = $_SERVER['REMOTE_ADDR'];
+        $url = "http://api.ipstack.com/".$ip."?access_key=bf01f636b7ad6832e3e7a97ba16ccfab";
+        $response = Http::get($url);
+        $loc = $response->json();
         
-        $_->location = $loc['city'];
-        $_->country = $loc['country_name'];
-        $_->region = $loc['region_name'];
-        $_->ip = $loc['ip'];
-        $_->long = $loc['longitude'];
-        $_->lat = $loc['latitude'];
-        $_->created_By = Auth::user()->email;
-        if($_->save()){
-            Auth::user()->location = $loc['city'];
-            Auth::user()->region = $loc['region_name'];
-            Auth::user()->long = $loc['longitude'];
-            Auth::user()->lat = $loc['latitude'];
-        }
-
-    }else{
-        //just a response 
-    }
-
+    
     ?>
     
     <div class="container-scroller">

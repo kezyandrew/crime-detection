@@ -71,18 +71,19 @@
             <table class="table table-stretched">
               <thead>
                 <tr>
-                  <th>Symbol</th>
-                  <th>Last Price</th>
-                  <th>Change</th>
+                  <th>Category</th>
+                  <th>More</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
                   <td>
-                    <p class="mb-1 text-dark font-weight-medium">NFLX</p><small class="font-weight-medium">Netflix, Inc.</small>
+                    <p class="mb-1 text-dark font-weight-medium">Title</p>
+                    <small class="font-weight-medium">
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    </small>
                   </td>
-                  <td class="font-weight-medium">$250.00</td>
-                  <td class="text-success font-weight-medium">+12.64</td>
+                  <td class="text-success font-weight-medium"><a href="{{ url('/') }}">Read More</a></td>
                 </tr>
                 
                 

@@ -5,9 +5,9 @@
     // return print_r(['Data', $req->json()]);
 
     $ip = $_SERVER['REMOTE_ADDR'];
-    // $url = "http://api.ipstack.com/".$ip."?access_key=bf01f636b7ad6832e3e7a97ba16ccfab";
-    $url = "https://www.googleapis.com/geolocation/v1/geolocate?key=AIzaSyAxPyBRZtDj7ssvtYE5_ExKC1aIgfYX_LU";
-    $response = Http::get($url);
+    $url = "http://api.ipstack.com/".$ip."?access_key=bf01f636b7ad6832e3e7a97ba16ccfab";
+    // $url = "https://www.googleapis.com/geolocation/v1/geolocate?key=AIzaSyAxPyBRZtDj7ssvtYE5_ExKC1aIgfYX_LU";
+    $response = Http::post($url);
     $loc = $response->json();
 
     // if($loc['region_name'] == ''){ $loc['region_name'] =='Undefined'; }

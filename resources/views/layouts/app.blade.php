@@ -63,22 +63,7 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 </head>
 <body>
-    <?php 
-        use Illuminate\Support\Facades\Http;
-        use Illuminate\Support\Facades\Carbon;
-        use App\User;
-        use App\Locations;
-        $_ = new Locations;
-
-        $ip = $_SERVER['REMOTE_ADDR'];
-        $url = "http://api.ipstack.com/".$ip."?access_key=bf01f636b7ad6832e3e7a97ba16ccfab";
-        $response = Http::get($url);
-        $loc = $response->json();
         
-        
-    
-    ?>
-    
     <div class="container-scroller">
         @include('inc.topbar')
         <div class="container-fluid page-body-wrapper">

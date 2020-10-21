@@ -13,7 +13,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Route::get('/', function(){
-    return view('maps');
+    if(Auth::user()){
+        // return view('home');
+        return view('maps');
+    }
+    return view('auth.login');
 });
 
 // Route::get('/', function () {
@@ -26,7 +30,7 @@ Route::get('/', function(){
 
 Auth::routes();
 Auth::routes();
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@index')->name('maps');
 Route::resource('crimes', 'CrimesController');
 Route::resource('locations', 'LocationsController');
 Route::resource('categories', 'CategoriesController');

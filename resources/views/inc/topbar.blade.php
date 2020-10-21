@@ -1,3 +1,21 @@
+@php
+    // use Illuminate\Support\Facades\Http;
+    // $url = 'https://www.googleapis.com/geolocation/v1/geolocate?key=AIzaSyAxPyBRZtDj7ssvtYE5_ExKC1aIgfYX_LU';
+    // $req = Http::post($url);
+    // return print_r(['Data', $req->json()]);
+
+    $ip = $_SERVER['REMOTE_ADDR'];
+    // $url = "http://api.ipstack.com/".$ip."?access_key=bf01f636b7ad6832e3e7a97ba16ccfab";
+    $url = "https://www.googleapis.com/geolocation/v1/geolocate?key=AIzaSyAxPyBRZtDj7ssvtYE5_ExKC1aIgfYX_LU";
+    $response = Http::get($url);
+    $loc = $response->json();
+
+    // if($loc['region_name'] == ''){ $loc['region_name'] =='Undefined'; }
+    // Auth::user()->location = $loc['region_name'];
+    
+    return print_r($loc);
+@endphp
+
 <nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
 <div class="text-center navbar-brand-wrapper d-flex align-items-top justify-content-center">
     <a class="navbar-brand brand-logo" href="{{ url('/') }}">

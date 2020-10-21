@@ -6,10 +6,12 @@
     // return print_r($loc);
 ?>
 
+@extends('layouts.app')
+@section('content')
+
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Place Searches</title>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
     <script
       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAxPyBRZtDj7ssvtYE5_ExKC1aIgfYX_LU&callback=initMap&libraries=places&v=weekly"
@@ -20,12 +22,14 @@
        * element that contains the map. */
       #map {
         height: 100%;
+        /* position: absolute; */
+        /* z-index: -1; */
       }
 
       /* Optional: Makes the sample page fill the window. */
       html,
       body {
-        height: 100%;
+        /* height: 95%; */
         margin: 0;
         padding: 0;
       }
@@ -76,3 +80,4 @@
     <div id="map"></div>
   </body>
 </html>
+@endsection

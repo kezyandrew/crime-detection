@@ -75,6 +75,7 @@
         $response = Http::get($url);
         $loc = $response->json();
         
+        
     
     ?>
     

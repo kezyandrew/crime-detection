@@ -1,10 +1,18 @@
+<?php
+    $ip = $_SERVER['REMOTE_ADDR'];
+    $url = "http://api.ipstack.com/".$ip."?access_key=bf01f636b7ad6832e3e7a97ba16ccfab";
+    $response = Http::get($url);
+    $loc = $response->json();
+    // return print_r($loc);
+?>
+
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Geolocation</title>
+    <title>Place Searches</title>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
     <script
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAxPyBRZtDj7ssvtYE5_ExKC1aIgfYX_LU&callback=initMap&libraries=&v=weekly"
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAxPyBRZtDj7ssvtYE5_ExKC1aIgfYX_LU&callback=initMap&libraries=places&v=weekly"
       defer
     ></script>
     <style type="text/css">
@@ -21,76 +29,46 @@
         margin: 0;
         padding: 0;
       }
-
-      .custom-map-control-button {
-        appearance: button;
-        background-color: #fff;
-        border: 0;
-        border-radius: 2px;
-        box-shadow: 0 1px 4px -1px rgba(0, 0, 0, 0.3);
-        cursor: pointer;
-        margin: 10px;
-        padding: 0 0.5em;
-        height: 40px;
-        font: 400 18px Roboto, Arial, sans-serif;
-        overflow: hidden;
-      }
-      .custom-map-control-button:hover {
-        background: #ebebeb;
-      }
     </style>
     <script>
-      // Note: This example requires that you consent to location sharing when
-      // prompted by your browser. If you see the error "The Geolocation service
-      // failed.", it means you probably did not give permission for the browser to
-      // locate you.
-      let map, infoWindow;
+      // This example requires the Places library. Include the libraries=places
+      // parameter when you first load the API. For example:
+      // <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
+      let map;
+      let service;
+      let infowindow;
 
       function initMap() {
+        const sydney = new google.maps.LatLng("<?php echo $loc['latitude'] ?>", "<?php echo $loc['longitude'] ?>");
+        infowindow = new google.maps.InfoWindow();
         map = new google.maps.Map(document.getElementById("map"), {
-          center: { lat: -34.397, lng: 150.644 },
+          center: sydney,
           zoom: 15,
         });
-        infoWindow = new google.maps.InfoWindow();
-        const locationButton = document.createElement("button");
-        locationButton.textContent = "Pan to Current Location";
-        locationButton.classList.add("custom-map-control-button");
-        map.controls[google.maps.ControlPosition.TOP_CENTER].push(
-          locationButton
-        );
-        locationButton.addEventListener("click", () => {
-          // Try HTML5 geolocation.
-          if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(
-              (position) => {
-                const pos = {
-                  lat: position.coords.latitude,
-                  lng: position.coords.longitude,
-                };
-                infoWindow.setPosition(pos);
-                infoWindow.setContent("Location found.");
-                infoWindow.open(map);
-                map.setCenter(pos);
-              },
-              () => {
-                handleLocationError(true, infoWindow, map.getCenter());
-              }
-            );
-          } else {
-            // Browser doesn't support Geolocation
-            handleLocationError(false, infoWindow, map.getCenter());
+        const request = {
+          query: "Museum of Contemporary Art Australia",
+          fields: ["name", "geometry"],
+        };
+        service = new google.maps.places.PlacesService(map);
+        service.findPlaceFromQuery(request, (results, status) => {
+          if (status === google.maps.places.PlacesServiceStatus.OK) {
+            for (let i = 0; i < results.length; i++) {
+              createMarker(results[i]);
+            }
+            map.setCenter(results[0].geometry.location);
           }
         });
       }
 
-      function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-        infoWindow.setPosition(pos);
-        infoWindow.setContent(
-          browserHasGeolocation
-            ? "Error: The Geolocation service failed."
-            : "Error: Your browser doesn't support geolocation."
-        );
-        infoWindow.open(map);
+      function createMarker(place) {
+        const marker = new google.maps.Marker({
+          map,
+          position: place.geometry.location,
+        });
+        google.maps.event.addListener(marker, "click", () => {
+          infowindow.setContent(place.name);
+          infowindow.open(map);
+        });
       }
     </script>
   </head>

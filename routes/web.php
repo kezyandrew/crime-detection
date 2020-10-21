@@ -12,14 +12,17 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', function () {
-    // return 'Login should be here';
-    if(Auth::user()){
-        return view('home');
-    }
-    return view('auth.login');
+Route::get('/', function(){
+    return view('maps');
 });
+
+// Route::get('/', function () {
+//     // return 'Login should be here';
+//     if(Auth::user()){
+//         return view('home');
+//     }
+//     return view('auth.login');
+// });
 
 Auth::routes();
 Auth::routes();

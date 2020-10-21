@@ -4,7 +4,7 @@
     <title>Geolocation</title>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
     <script
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCYspFQYRh06EuJRJrY76EPsqlkL4CGbZ0&callback=initMap&libraries=&v=weekly"
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAxPyBRZtDj7ssvtYE5_ExKC1aIgfYX_LU&callback=initMap&libraries=&v=weekly"
       defer
     ></script>
     <style type="text/css">
@@ -49,7 +49,7 @@
       function initMap() {
         map = new google.maps.Map(document.getElementById("map"), {
           center: { lat: -34.397, lng: 150.644 },
-          zoom: 6,
+          zoom: 15,
         });
         infoWindow = new google.maps.InfoWindow();
         const locationButton = document.createElement("button");

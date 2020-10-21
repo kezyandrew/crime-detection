@@ -4,7 +4,7 @@
     $url = "https://www.googleapis.com/geolocation/v1/geolocate?key=AIzaSyAxPyBRZtDj7ssvtYE5_ExKC1aIgfYX_LU";
     $response = Http::get($url);
     $loc = $response->json();
-    return print_r($loc);
+    // return print_r($loc);
     
 ?>
 

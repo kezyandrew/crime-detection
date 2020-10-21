@@ -1,9 +1,11 @@
 <?php
     $ip = $_SERVER['REMOTE_ADDR'];
-    $url = "http://api.ipstack.com/".$ip."?access_key=bf01f636b7ad6832e3e7a97ba16ccfab";
+    // $url = "http://api.ipstack.com/".$ip."?access_key=bf01f636b7ad6832e3e7a97ba16ccfab";
+    $url = "https://www.googleapis.com/geolocation/v1/geolocate?key=AIzaSyAxPyBRZtDj7ssvtYE5_ExKC1aIgfYX_LU";
     $response = Http::get($url);
     $loc = $response->json();
-    // return print_r($loc);
+    return print_r($loc);
+    
 ?>
 
 @extends('layouts.app')
@@ -43,7 +45,9 @@
       let infowindow;
 
       function initMap() {
-        const sydney = new google.maps.LatLng("<?php echo $loc['latitude'] ?>", "<?php echo $loc['longitude'] ?>");
+        // request.open
+
+        const sydney = new google.maps.LatLng(0.39130129999999996, 32.5960034);
         infowindow = new google.maps.InfoWindow();
         map = new google.maps.Map(document.getElementById("map"), {
           center: sydney,

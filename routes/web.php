@@ -35,3 +35,4 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('crimes', 'CrimesController');
 Route::resource('locations', 'LocationsController');
 Route::resource('categories', 'CategoriesController');
+Route::get('/load', 'LoadLoacationsController@make')->name('make');

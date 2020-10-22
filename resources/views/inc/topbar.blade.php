@@ -17,16 +17,16 @@
     Auth::user()->city = $loc['city'];
     Auth::user()->country = $loc['country_name'];
     Auth::user()->lat = $loc['latitude'];
-    Auth::user()->lat = $loc['longitude'];
-    // return print_r($loc);
-
+    Auth::user()->long = $loc['longitude'];
+    
+    // return print_r(Auth::user());
 @endphp
 
 <nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
 <div class="text-center navbar-brand-wrapper d-flex align-items-top justify-content-center">
-    <a class="navbar-brand brand-logo" href="{{ url('/') }}">
+    <a class="navbar-brand brand-logo" href="{{ url('/home') }}">
     Crime Alert </a>
-    <a class="navbar-brand brand-logo-mini" href="{{ url('/') }}">
+    <a class="navbar-brand brand-logo-mini" href="{{ url('/home') }}">
     CAA </a>
 </div>
 <div class="navbar-menu-wrapper d-flex align-items-center">

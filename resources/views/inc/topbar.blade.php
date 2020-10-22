@@ -5,15 +5,21 @@
     // return print_r(['Data', $req->json()]);
 
     $ip = $_SERVER['REMOTE_ADDR'];
+    if($ip == '::1'){$ip= "154.224.82.105"; };
+
+    // return print_r($ip);
     $url = "http://api.ipstack.com/".$ip."?access_key=bf01f636b7ad6832e3e7a97ba16ccfab";
     // $url = "https://www.googleapis.com/geolocation/v1/geolocate?key=AIzaSyAxPyBRZtDj7ssvtYE5_ExKC1aIgfYX_LU";
-    $response = Http::post($url);
+    $response = Http::get($url);
     $loc = $response->json();
 
-    if($loc['country_name'] == ''){ $loc['country_name'] =='Undefined'; }
-    Auth::user()->location = $loc['country_name'];
-    
+    if($loc['region_name'] == ''){ $loc['country_name'] =='Undefined'; }
+    Auth::user()->city = $loc['city'];
+    Auth::user()->country = $loc['country_name'];
+    Auth::user()->lat = $loc['latitude'];
+    Auth::user()->lat = $loc['longitude'];
     // return print_r($loc);
+
 @endphp
 
 <nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
@@ -33,7 +39,7 @@
             <i class="flag-icon flag-icon-ug"></i>
             </div>
         </div> --}}
-        <span class="profile-text font-weight-medium d-none d-md-block">{{ $loc['country_name'] }}</span>
+        <span class="profile-text font-weight-medium d-none d-md-block">{{ $loc['city'] }}</span>
         </a>
         {{-- <div class="dropdown-menu dropdown-menu-left navbar-dropdown py-2" aria-labelledby="LanguageDropdown">
         <a class="dropdown-item">

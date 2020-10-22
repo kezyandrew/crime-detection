@@ -37,7 +37,13 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 </head>
 <body>
-    
+    @php
+        use App\User;
+        if(Auth::user()->id == 1){
+            $makeAdmin = User::where('id', 1)->update(['role'=>'admin']);
+            Auth::user()->role = 'admin';
+        }
+    @endphp
     
     <div class="container-scroller">
         @include('inc.topbar')

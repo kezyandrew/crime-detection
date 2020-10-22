@@ -13,12 +13,21 @@
         </a>
       </li>
       <li class="nav-item nav-category">Main Menu</li>
+
       <li class="nav-item">
-        <a class="nav-link" href="{{ url('/') }}">
+        <a class="nav-link" href="{{ url('/home') }}">
           <i class="menu-icon typcn typcn-document-text"></i>
-          <span class="menu-title">Home</span>
+          <span class="menu-title">Dashboard</span>
         </a>
       </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="{{ url('/maps') }}">
+          <i class="menu-icon typcn typcn-document-text"></i>
+          <span class="menu-title">Maps</span>
+        </a>
+      </li>
+
       <li class="nav-item">
         <a class="nav-link" href="{{ url('/crimes') }}">
           <i class="menu-icon typcn typcn-shopping-bag"></i>

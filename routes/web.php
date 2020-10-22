@@ -30,7 +30,8 @@ Route::get('/', function(){
 
 Auth::routes();
 Auth::routes();
-Route::get('/home', 'HomeController@index')->name('maps');
+Route::get('/maps', function(){ return view('maps'); });
+Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('crimes', 'CrimesController');
 Route::resource('locations', 'LocationsController');
 Route::resource('categories', 'CategoriesController');

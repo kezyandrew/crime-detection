@@ -1,13 +1,3 @@
-<?php
-    $ip = $_SERVER['REMOTE_ADDR'];
-    // $url = "http://api.ipstack.com/".$ip."?access_key=bf01f636b7ad6832e3e7a97ba16ccfab";
-    $url = "https://www.googleapis.com/geolocation/v1/geolocate?key=AIzaSyAxPyBRZtDj7ssvtYE5_ExKC1aIgfYX_LU";
-    $response = Http::get($url);
-    $loc = $response->json();
-    // return print_r($loc);
-    
-?>
-
 @extends('layouts.app')
 @section('content')
 
@@ -24,14 +14,12 @@
        * element that contains the map. */
       #map {
         height: 100%;
-        /* position: absolute; */
-        /* z-index: -1; */
       }
 
       /* Optional: Makes the sample page fill the window. */
       html,
       body {
-        /* height: 95%; */
+        height: 100%;
         margin: 0;
         padding: 0;
       }
@@ -45,12 +33,10 @@
       let infowindow;
 
       function initMap() {
-        // request.open
-
-        const sydney = new google.maps.LatLng(0.39130129999999996, 32.5960034);
+        const kampala = new google.maps.LatLng(0.39130129999999996,32.5960034);
         infowindow = new google.maps.InfoWindow();
         map = new google.maps.Map(document.getElementById("map"), {
-          center: sydney,
+          center: kampala,
           zoom: 15,
         });
         const request = {
@@ -84,4 +70,5 @@
     <div id="map"></div>
   </body>
 </html>
+    
 @endsection

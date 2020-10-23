@@ -12,12 +12,12 @@
                 @csrf
                 <div class="form-group">
                   <label for="exampleInputEmail1">Category Name</label>
-                  <input type="text" name="name" class="form-control" placeholder="ex: Assault and Battery.">
+                  <input type="text" required name="name" class="form-control" placeholder="ex: Assault and Battery.">
                 </div>
 
                 <div class="form-group">
                     <label for="exampleTextarea1">Category Description</label>
-                    <textarea name="description" class="form-control" placeholder="Category Details " id="exampleTextarea1" rows="2"></textarea>
+                    <textarea name="description" required class="form-control" placeholder="Category Details " id="exampleTextarea1" rows="2"></textarea>
                   </div>
                 <button type="submit" class="btn btn-success mr-2">Submit</button>
                 <button class="btn btn-light">Cancel</button>

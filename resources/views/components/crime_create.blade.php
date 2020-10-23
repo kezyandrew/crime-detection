@@ -10,17 +10,17 @@
                 @csrf
                 <div class="form-group">
                   <label for="exampleInputEmail1">Crime</label>
-                  <input type="text" name="crime" class="form-control" placeholder="ex: robery">
+                  <input type="text" name="crime" required class="form-control" placeholder="ex: robery">
                 </div>
 
                 <div class="form-group">
                   {{-- <label for="exampleInputEmail1">Crime</label> --}}
-                  <input type="hidden" name="location" value="Current Location" class="form-control" placeholder="ex: robery">
+                  <input type="hidden" name="location" value="Current Location" required class="form-control" placeholder="ex: robery">
                 </div>
 
                 <div class="form-group">
                   <label for="exampleInputPassword1">Select Category</label>
-                  <select name="cat" class="form-control">
+                  <select name="cat" required class="form-control">
                       <option value="" disabled selected>Select Crime Category</option>
                       @if(count($cats) > 0)
                         @foreach($cats as $cat)
@@ -31,7 +31,7 @@
                 </div>
                 <div class="form-group">
                     <label for="exampleTextarea1">Describe the Crime</label>
-                    <textarea name="description" class="form-control" placeholder="Enter all the details you can find about the incident which may include number of casualties that might have been involved" id="exampleTextarea1" rows="2"></textarea>
+                    <textarea name="description" required class="form-control" placeholder="Enter all the details you can find about the incident which may include number of casualties that might have been involved" id="exampleTextarea1" rows="2"></textarea>
                   </div>
                 <button type="submit" class="btn btn-success mr-2">Submit</button>
                 <button class="btn btn-light">Cancel</button>

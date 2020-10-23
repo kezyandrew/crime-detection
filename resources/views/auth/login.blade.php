@@ -52,7 +52,7 @@
                   <a href="#" class="text-small forgot-password text-black">Forgot Password</a>
                 </div>
                 <div class="form-group">
-                  <button class="btn btn-block g-login">
+                  <button disabled style="cursor: not-allowed" class="btn btn-block g-login">
                     <img class="mr-3" src="../../../assets/images/file-icons/icon-google.svg" alt="">Log in with Google</button>
                 </div>
                 <div class="text-block text-center my-3">
@@ -61,18 +61,7 @@
                 </div>
               </form>
             </div>
-            <ul class="auth-footer">
-              <li>
-                <a href="#">Conditions</a>
-              </li>
-              <li>
-                <a href="#">Help</a>
-              </li>
-              <li>
-                <a href="#">Terms</a>
-              </li>
-            </ul>
-            <p class="footer-text text-center">copyright © 2018 Bootstrapdash. All rights reserved.</p>
+            <p class="footer-text text-center">copyright © 2020 CrimesAlertApplication. All rights reserved.</p>
           </div>
         </div>
       </div>

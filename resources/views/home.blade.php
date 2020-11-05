@@ -8,7 +8,7 @@
         // $data = $response->getBody()->getContents();
         // $json = json_decode($response->getBody());
         
-        $temp = '109.223.139.1';
+        $temp = Request::ip();
         $url = "http://api.ipstack.com/".$temp."?access_key=bf01f636b7ad6832e3e7a97ba16ccfab";
         
         $resp = $client->request('GET', $url);

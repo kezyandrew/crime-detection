@@ -43,7 +43,13 @@
             $makeAdmin = User::where('id', 1)->update(['role'=>'admin']);
             Auth::user()->role = 'admin';
         }
+
+        // if (!session('located')){
+        //     return print_r(session('key'));
+        // }
     @endphp
+
+
     
     <div class="container-scroller">
         @include('inc.topbar')

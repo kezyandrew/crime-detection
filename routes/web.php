@@ -13,6 +13,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Route::get('/', function(){
+
+    // if(!session('location')){
+    //     // return print_r(session);
+    //     return view('startSession');
+    // }
+
     if(Auth::user()){
         // return view('home');
         return view('maps');
@@ -36,5 +42,4 @@ Route::resource('crimes', 'CrimesController');
 Route::resource('locations', 'LocationsController');
 Route::resource('categories', 'CategoriesController');
 Route::get('/load', 'LoadLoacationsController@make')->name('make');
-
-// Route::resource('/locations', LocationsController)
+Route::get('/start', 'HomeController@startSession')->name('startSession');

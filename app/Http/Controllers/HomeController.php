@@ -26,7 +26,13 @@ class HomeController extends Controller
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function index()
-    {   $user = Auth::user()->email;
+    {   
+        if(!session('location')){
+
+            return view('startSession');
+        }
+        
+        $user = Auth::user()->email;
         $locations = Locations::orderBy('id', 'desc')->where('created_By', $user)->get();
         $crimes = Crime::orderBy('id', 'desc')->where('created_By', $user)->get();
         $categories = Category::orderBy('id', 'desc')->get();
@@ -35,5 +41,10 @@ class HomeController extends Controller
             ->with('categories', $categories)
             ->with('locations', $locations)
             ->with('crimes', $crimes);
+    }
+
+    public function startSession(){
+
+        return view('startSession');
     }
 }

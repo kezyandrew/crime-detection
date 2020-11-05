@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Locations;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Http;
+$client = new \GuzzleHttp\Client();
+
+// $temp = Request::ip();
 
 class LoadLoacationsController extends Controller
 {
@@ -13,23 +17,43 @@ class LoadLoacationsController extends Controller
         $this->middleware('auth');
     }
 
-    public function make(){
-        // $table->string('location')->nullable();
-        //     $table->string('country')->nullable();
-        //     $table->string('region')->nullable();
-        //     $table->string('ip')->nullable();
-        //     $table->string('long')->nullable();
-        //     $table->string('lat')->nullable();
-        //     $table->string('created_By')->nullable();
-        $data = Auth::user();
+    public function make(Request $request){
+
+        // $response = $client->request('POST', 'https://www.googleapis.com/geolocation/v1/geolocate?key=AIzaSyAxPyBRZtDj7ssvtYE5_ExKC1aIgfYX_LU');
+        // $data = $response->getBody()->getContents();
+        // $json = json_decode($response->getBody());
+        
+        $temp = $request->ip();
+        
+        if ($temp == "::1" || "127.0.0.1"){
+            $temp = '109.223.139.1';
+        }
+
+        $url = "http://api.ipstack.com/".$temp."?access_key=bf01f636b7ad6832e3e7a97ba16ccfab";
+        
+        $response = Http::get($url);
+        $data = $response->json();
+
+        session([
+            'location'=> $data['city'],
+            'region'=> $data['region_name'],
+            'longitude'=> $data['longitude'],
+            'latitude'=> $data['latitude']
+             ]);
+
+        // session(['region'=> $data['region_name'] ]);
+        // session(['longitude'=> $data['longitude'] ]);
+        // session(['latitude'=> $data['latitude'] ]);
+        
 
         $n = new Locations;
-        $n->country = $data->country;
-        $n->region = $data->city;
-        $n->ip = $data->country_name;
-        $n->long = $data->long;
-        $n->lat = $data->lat;
-        $n->created_By = $data->email;
+        $n->country = $data['country_name'];
+        $n->region = $data['region_name'];
+        $n->location = $data['city'];
+        $n->ip = $data['ip'];
+        $n->long = $data['longitude'];
+        $n->lat = $data['latitude'];
+        $n->created_By = Auth::user()->email;
 
         if($n->save()){
             return back();

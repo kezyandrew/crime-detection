@@ -31,6 +31,7 @@
               <a class="dropdown-item" href="#">This Year</a>
             </div>
           </div> --}}
+
           {{-- <a href="#" class="advanced-link toolbar-item">Advanced Options</a> --}}
         </div>
         <div class="sort-wrapper"> 
@@ -55,6 +56,7 @@
       </div>
     </div>
   </div>
+  
   @include('admin.reports', ['categories'=>$categories, 'crimes'=>$crimes, 'locations'=>$locations])
   
   

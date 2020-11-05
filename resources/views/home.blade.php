@@ -1,5 +1,9 @@
 @extends('layouts.app')
 @section('content')
+    @php
+        $ip = Request::ip();
+        return print_r( $ip);
+    @endphp
         @switch(Auth::user()->role)
             @case('user')
                 @include('dashboards.users')

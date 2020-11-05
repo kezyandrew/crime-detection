@@ -72,7 +72,7 @@
         </div>
       </div>
     </div>
-  </div>
+  </div>  
   @include('components.stats', ['crimes'=>$crime, 'locations'=>$locations, 'cats'=>$cats])
   @include('components.activities', ['crimes'=>$crime, 'locations'=>$locations, 'cats'=>$cats])
   {{-- @include('components.reports') --}}

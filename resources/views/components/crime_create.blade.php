@@ -24,7 +24,7 @@
                       <option value="" disabled selected>Select Crime Category</option>
                       @if(count($cats) > 0)
                         @foreach($cats as $cat)
-                          <option value="{{ $cat->id }}">{{ $cat->cat_name }}</option>
+                          <option value="{{ $cat->cat_name }}">{{ $cat->cat_name }}</option>
                         @endforeach
                       @endif
                   </select>
@@ -46,6 +46,10 @@
         <div class="card">
           <div class="card-body">
               <h4 class="card-title">Recently Created.</h4>
+            @php
+                $cats = new_crime_cats();
+            @endphp
+
               @if(count($cats) > 0)
                 @foreach($cats as $cat)
                   <div class="d-flex mt-3 py-2 border-bottom">

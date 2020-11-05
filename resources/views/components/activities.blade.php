@@ -25,7 +25,7 @@
                   <small class="text-muted">{{ $crime->created_at }}</small>
                   <p class="font-weight-semibold text-gray mb-0">{{ $crime->crime_name }}</p>
                 </div>
-                <small class="text-muted ml-auto">View Details</small>
+                <small class="text-muted ml-auto"> {{ $crime->location }} </small>
               </div>
             @endforeach
             {{ $crimes->links() }}
@@ -67,6 +67,9 @@
       <div class="card">
         <div class="card-body">
           <h4 class="card-title mb-0">New Crime Categories</h4>
+          @php
+              $cats = new_crime_cats();
+          @endphp
           <div class="table-responsive">
             <table class="table table-stretched">
               <thead>
@@ -76,16 +79,17 @@
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>
-                    <p class="mb-1 text-dark font-weight-medium">Title</p>
-                    <small class="font-weight-medium">
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    </small>
-                  </td>
-                  <td class="text-success font-weight-medium"><a href="{{ url('/') }}">Read More</a></td>
-                </tr>
-                
+                @foreach ($cats as $cat)
+                  <tr>
+                    <td>
+                      <p class="mb-1 text-dark font-weight-medium">{{ $cat->cat_name }}</p>
+                      <small class="font-weight-medium">
+                        {{ $cat->description }}
+                      </small>
+                    </td>
+                    <td class="text-success font-weight-medium"><a href="#">Read More</a></td>
+                  </tr>
+                @endforeach               
                 
               </tbody>
             </table>

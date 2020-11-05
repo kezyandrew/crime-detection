@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Crime;
 use App\Locations;
 use Illuminate\Support\Facades\Auth;
+use App\Stats;
 
 class HomeController extends Controller
 {
@@ -32,6 +33,8 @@ class HomeController extends Controller
             return view('startSession');
         }
         
+
+
         $user = Auth::user()->email;
         $locations = Locations::orderBy('id', 'desc')->where('created_By', $user)->get();
         $crimes = Crime::orderBy('id', 'desc')->where('created_By', $user)->get();

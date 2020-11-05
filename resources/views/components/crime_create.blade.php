@@ -15,7 +15,7 @@
 
                 <div class="form-group">
                   {{-- <label for="exampleInputEmail1">Crime</label> --}}
-                  <input type="hidden" name="location" value="Current Location" required class="form-control" placeholder="ex: robery">
+                  <input type="hidden" name="location" value="{{ session('location') }}" required class="form-control" placeholder="ex: robery">
                 </div>
 
                 <div class="form-group">

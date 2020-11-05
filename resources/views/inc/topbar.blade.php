@@ -65,7 +65,7 @@
         <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list pb-0" aria-labelledby="notificationDropdown">
         <a class="dropdown-item py-3 border-bottom">
             <p class="mb-0 font-weight-medium float-left">You have 1 new notifications </p>
-            <span class="badge badge-pill badge-primary float-right">View all</span>
+            <span class="badge badge-pill badge-primary float-right">View all {{ get_stats() }} </span>
         </a>
 
         <a class="dropdown-item preview-item py-3">

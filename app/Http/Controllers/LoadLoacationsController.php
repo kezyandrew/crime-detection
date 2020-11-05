@@ -22,7 +22,25 @@ class LoadLoacationsController extends Controller
         // $response = $client->request('POST', 'https://www.googleapis.com/geolocation/v1/geolocate?key=AIzaSyAxPyBRZtDj7ssvtYE5_ExKC1aIgfYX_LU');
         // $data = $response->getBody()->getContents();
         // $json = json_decode($response->getBody());
-        
+
+        $url = "https://www.googleapis.com/geolocation/v1/geolocate?key=AIzaSyAxPyBRZtDj7ssvtYE5_ExKC1aIgfYX_LU";
+        $ch = curl_init($url);
+        curl_setopt($ch, CURLOPT_POST, 1);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        $apiResponse = curl_exec($ch);
+        curl_close($ch);
+        $jsonArrayResponse = json_decode($apiResponse);
+
+        foreach ($jsonArrayResponse as $response) {
+            if (gettype($response) == 'object'){
+
+                session([
+                    'longitude'=> $response->lng,
+                    'latitude'=> $response->lat
+                ]);
+            }
+        }
+
         $temp = $request->ip();
         
         if ($temp == "::1" || "127.0.0.1"){
@@ -37,22 +55,17 @@ class LoadLoacationsController extends Controller
         session([
             'location'=> $data['city'],
             'region'=> $data['region_name'],
-            'longitude'=> $data['longitude'],
-            'latitude'=> $data['latitude']
-             ]);
-
-        // session(['region'=> $data['region_name'] ]);
-        // session(['longitude'=> $data['longitude'] ]);
-        // session(['latitude'=> $data['latitude'] ]);
-        
+            // 'longitude'=> $data['longitude'],
+            // 'latitude'=> $data['latitude']
+             ]);        
 
         $n = new Locations;
         $n->country = $data['country_name'];
         $n->region = $data['region_name'];
         $n->location = $data['city'];
         $n->ip = $data['ip'];
-        $n->long = $data['longitude'];
-        $n->lat = $data['latitude'];
+        $n->long = session('longitude');
+        $n->lat = session('latitude');
         $n->created_By = Auth::user()->email;
 
         if($n->save()){

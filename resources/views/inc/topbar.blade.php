@@ -12,11 +12,11 @@
     <li class="nav-item font-weight-semibold d-none d-lg-block">Location Detected : {{ Auth::user()->location }}</li>
     <li class="nav-item dropdown language-dropdown">
         <a class="nav-link dropdown-toggle px-2 d-flex align-items-center" id="LanguageDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
-        {{-- <div class="d-inline-flex mr-0 mr-md-3">
+        <div class="d-inline-flex mr-0 mr-md-3">
             <div class="flag-icon-holder">
             <i class="flag-icon flag-icon-ug"></i>
             </div>
-        </div> --}}
+        </div>
         <span class="profile-text font-weight-medium d-none d-md-block">{{ session('location') }}</span>
         </a>
         {{-- <div class="dropdown-menu dropdown-menu-left navbar-dropdown py-2" aria-labelledby="LanguageDropdown">
@@ -29,9 +29,9 @@
     </li>
     </ul>
     <form class="ml-auto search-form d-none d-md-block" action="#">
-    <div class="form-group">
-        <input type="search" class="form-control" placeholder="Search Here">
-    </div>
+        <div class="form-group">
+            <input type="search" class="form-control" placeholder="Search Here">
+        </div>
     </form>
     <ul class="navbar-nav ml-auto">
     <li class="nav-item dropdown">

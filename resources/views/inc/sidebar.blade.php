@@ -3,12 +3,14 @@
       <li class="nav-item nav-profile">
         <a href="#" class="nav-link">
           <div class="profile-image">
-            <img class="img-xs rounded-circle" src="assets/images/faces/face8.jpg" alt="profile image">
+            <img class="img-xs rounded-circle" src="https://cdn.iconscout.com/icon/free/png-512/shield-protect-verify-defense-safety-on-protection-1-4114.png" alt="profile image">
             <div class="dot-indicator bg-success"></div>
           </div>
           <div class="text-wrapper">
             <p class="profile-name">{{ Auth::user()->name }}</p>
             <p class="designation">{{ Auth::user()->email }}</p>
+
+            {{-- <p class="designation"> Location {{ session('location') }}</p> --}}
           </div>
         </a>
       </li>

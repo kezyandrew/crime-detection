@@ -26,7 +26,7 @@
             <li>
               <form action="{{ url('/load') }}" method="GET">
                 @csrf
-                <button type="submit" class="btn btn-primary btn-sm">Tag Location</button>
+                <button type="submit" class="btn btn-primary btn-sm">Refresh Location</button>
               </form>
             </li>
             <li>

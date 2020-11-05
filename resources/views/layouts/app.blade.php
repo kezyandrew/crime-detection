@@ -22,6 +22,7 @@
     <!-- End Layout styles -->
     {{-- end custom styles here --}}
 
+    <link rel="icon" type="image/x-con" href="assets/images/icon.png">
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 

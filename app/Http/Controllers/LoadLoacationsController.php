@@ -42,10 +42,11 @@ class LoadLoacationsController extends Controller
         }
 
         $temp = $request->ip();
-        
-        if ($temp == "::1" || "127.0.0.1"){
-            $temp = '109.223.139.1';
-        }
+        return print_r($temp);
+
+        // if ($temp == "::1" || "127.0.0.1"){
+        //     $temp = '109.223.139.1';
+        // }
 
         $url = "http://api.ipstack.com/".$temp."?access_key=bf01f636b7ad6832e3e7a97ba16ccfab";
         

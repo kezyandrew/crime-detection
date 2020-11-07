@@ -42,7 +42,7 @@ class LoadLoacationsController extends Controller
         }
 
         $temp = $request->ip();
-        return print_r($temp);
+        // return print_r($temp);
 
         // if ($temp == "::1" || "127.0.0.1"){
         //     $temp = '109.223.139.1';

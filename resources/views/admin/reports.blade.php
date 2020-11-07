@@ -1,6 +1,10 @@
 <?php
-  use App\Locations;
-  $locations = Locations::orderBy('id', 'desc')->paginate(3);
+  use App\Crime;
+  $locations = new_locations();
+  $crimes = Crime::orderBy('created_at', 'desc')
+    ->paginate(10);
+    // ->get();
+
   /**
    * We should also have a criminals table fetch dat from here.
    * */
@@ -53,20 +57,24 @@
                         </tr>
                       </thead>
                       <tbody>
-                        <tr>
-                          <td class="py-1">
-                          <img src="{{ asset('assets/images/robber.png') }}" alt="image" /> </td>
-                          <td> Crime</td>
-                          <td> location </td>
-                          <td>
-                            <div class="progress">
-                              <div class="progress-bar bg-success" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                          </td>
-                          
-                          <td> May 15, 2015 </td>
-                        </tr>
-
+                        @if (count($crimes) > 0)
+                            @foreach ($crimes as $crime)
+                              <tr>
+                                <td class="py-1">
+                                  <img src="{{ asset('assets/images/robber.png') }}" alt="image" /> </td>
+                                <td> {{ $crime->crime_name }} </td>
+                                <td> {{ $crime->location }} </td>
+                                <td>
+                                  <div class="progress">
+                                    <div class="progress-bar bg-success" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                  </div>
+                                </td>
+                                
+                                <td> {{ $crime->created_at }} </td>
+                              </tr>
+                            @endforeach
+                            {{ $crimes->links() }}
+                        @endif
                       </tbody>
                     </table>
                   </div>
@@ -88,10 +96,10 @@
                   @foreach($locations as $locs)
 
                     <div class="d-flex w-100 pt-2 mt-4">
-                      <p class="mb-0 font-weight-semibold">California</p>
+                      <p class="mb-0 font-weight-semibold">{{ $locs->location }}</p>
                       <div class="wrapper ml-auto d-flex align-items-center">
-                        <p class="font-weight-semibold mb-0">26,437</p>
-                        <p class="ml-1 mb-0">26%</p>
+                        <p class="font-weight-semibold mb-0">{{ $locs->country }}</p>
+                        <p class="ml-1 mb-0"> {{ $locs->ip }} </p>
                       </div>
                     </div>
                     @endforeach
@@ -103,7 +111,7 @@
             </div>
           </div>
         </div>
-        <div class="col-md-12 grid-margin">
+        {{-- <div class="col-md-12 grid-margin">
           <div class="card">
             <div class="card-body">
               <h4 class="card-title mb-0">New Criminals</h4>
@@ -118,7 +126,7 @@
               
             </div>
           </div>
-        </div>
+        </div> --}}
       </div>
     </div>
   </div>

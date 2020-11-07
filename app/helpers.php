@@ -2,6 +2,8 @@
 <?php
 use App\Crime;
 use App\Category;
+use App\Locations;
+use GeoIp2\Record\Location;
 
 function get_stats(){   
         // the stats array;
@@ -54,4 +56,15 @@ function new_crime_cats(){
     $cats = Category::orderBy('created_at', 'desc')->take(4)->get();
     return $cats;
 
+}
+
+
+function new_locations(){
+
+    $location = Locations::orderBy('created_at', 'desc')
+        ->distinct('location')
+        ->paginate(3);
+        // ->paginate(3);
+
+    return $location;
 }

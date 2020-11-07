@@ -22,7 +22,7 @@ class LoadLoacationsController extends Controller
         // $response = $client->request('POST', 'https://www.googleapis.com/geolocation/v1/geolocate?key=AIzaSyAxPyBRZtDj7ssvtYE5_ExKC1aIgfYX_LU');
         // $data = $response->getBody()->getContents();
         // $json = json_decode($response->getBody());
-
+        
         $url = "https://www.googleapis.com/geolocation/v1/geolocate?key=AIzaSyAxPyBRZtDj7ssvtYE5_ExKC1aIgfYX_LU";
         $ch = curl_init($url);
         curl_setopt($ch, CURLOPT_POST, 1);

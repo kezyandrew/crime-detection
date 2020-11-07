@@ -35,6 +35,12 @@
           {{-- <a href="#" class="advanced-link toolbar-item">Advanced Options</a> --}}
         </div>
         <div class="sort-wrapper"> 
+          
+          {{-- <form action="{{ url('/load') }}" method="GET">
+            @csrf
+            <button type="submit" class="btn btn-primary btn-sm">Refresh Location</button>
+          </form> --}}
+
           &nbsp;
           <a href="{{ url('/crimes') }}" type="button" class="btn btn-primary toolbar-item">
             Add Crime category

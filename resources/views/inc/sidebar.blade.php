@@ -46,9 +46,17 @@
         </li>
       @endif
       <li class="nav-item">
-        <a class="nav-link" href="{{ url('/') }}">
+        {{-- <a  href="{{ url('/') }}"> --}}
           <i class="menu-icon typcn typcn-shopping-bag"></i>
-          <span class="menu-title">Logout</span>
+          <a class="nav-link" href="{{ route('logout') }}"
+              onclick="event.preventDefault();
+                            document.getElementById('logout-form').submit();">
+              {{ __('Logout') }}
+          </a>
+
+          <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+              @csrf
+          </form>
         </a>
       </li>
       

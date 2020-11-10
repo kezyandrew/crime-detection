@@ -53,7 +53,7 @@ function get_stats(){
 
 
 function new_crime_cats(){
-    $cats = Category::orderBy('created_at', 'desc')->take(4)->get();
+    $cats = Category::orderBy('created_at', 'desc')->paginate(5);
     return $cats;
 
 }

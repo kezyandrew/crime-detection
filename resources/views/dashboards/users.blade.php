@@ -1,5 +1,5 @@
 
-<?php 
+<?php
   use App\Locations;
   use App\Crime;
   use App\Category;
@@ -7,7 +7,7 @@
   $crime = Crime::orderBy('id', 'desc')->get();;
   $cats = Category::orderBy('id', 'desc')->get();
   $Locations = Locations::orderBy('id', 'desc')->get();
-  
+
 ?>
 
 @extends('layouts.app')
@@ -17,13 +17,13 @@
       <div class="page-header">
         <h4 class="page-title">Dashboard</h4>
         <div class="quick-link-wrapper w-100 d-md-flex flex-md-wrap">
-          
+
           {{-- <ul class="quick-links">
             <li><a href="#">Crime Stats Data</a></li>
             <li><a href="#">Own analysis</a></li>
             <li><a href="#">Activity Logs</a></li>
           </ul> --}}
-          
+
           <ul class="quick-links ml-auto">
             <li>
               <form action="{{ url('/load') }}" method="GET">
@@ -39,10 +39,11 @@
           </ul>
         </div>
       </div>
+      {{-- @include('dashboards.stats') --}}
     </div>
     <div class="col-md-12">
       <div class="page-header-toolbar">
-        
+
         <div class="filter-wrapper">
           <div class="dropdown toolbar-item">
             <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownsorting" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Sort Since</button>
@@ -55,7 +56,7 @@
           </div>
           {{-- <a href="#" class="advanced-link toolbar-item">Advanced Options</a> --}}
         </div>
-        <div class="sort-wrapper"> 
+        <div class="sort-wrapper">
           &nbsp;
           &nbsp;
           <a href="{{ url('/crimes') }}" type="button" class="btn btn-primary toolbar-item">
@@ -72,10 +73,10 @@
         </div>
       </div>
     </div>
-  </div>  
+  </div>
   @include('components.stats', ['crimes'=>$crime, 'locations'=>$locations, 'cats'=>$cats])
   @include('components.activities', ['crimes'=>$crime, 'locations'=>$locations, 'cats'=>$cats])
   {{-- @include('components.reports') --}}
-  
+
 
 @endsection

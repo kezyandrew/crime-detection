@@ -20,7 +20,7 @@
     </div>
     <div class="col-md-12">
       <div class="page-header-toolbar">
-        
+
         <div class="filter-wrapper">
           {{-- <div class="dropdown toolbar-item">
             <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownsorting" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Sort Since</button>
@@ -34,8 +34,8 @@
 
           {{-- <a href="#" class="advanced-link toolbar-item">Advanced Options</a> --}}
         </div>
-        <div class="sort-wrapper"> 
-          
+        <div class="sort-wrapper">
+
           {{-- <form action="{{ url('/load') }}" method="GET">
             @csrf
             <button type="submit" class="btn btn-primary btn-sm">Refresh Location</button>
@@ -47,7 +47,7 @@
           </a>
           &nbsp;
           <a href="{{ url('/crimes') }}" type="button" class="btn btn-primary toolbar-item">
-            Add Crime 
+            Add Crime
           </a>
           &nbsp;
 
@@ -62,9 +62,9 @@
       </div>
     </div>
   </div>
-  
+
   @include('admin.reports', ['categories'=>$categories, 'crimes'=>$crimes, 'locations'=>$locations])
-  
-  
+
+
 
 @endsection

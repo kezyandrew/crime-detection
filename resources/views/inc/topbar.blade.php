@@ -5,7 +5,7 @@
     <a class="navbar-brand brand-logo" href="{{ url('/home') }}">
     Crime Alert </a>
     <a class="navbar-brand brand-logo-mini" href="{{ url('/home') }}">
-    CAA </a>
+    CAAA </a>
 </div>
 <div class="navbar-menu-wrapper d-flex align-items-center">
     <ul class="navbar-nav">

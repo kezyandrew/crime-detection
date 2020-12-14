@@ -1,6 +1,8 @@
 <?php
   use App\Crime;
-  $locations = new_locations();
+  use App\location_m;
+
+  $locations = location_m::paginate(5);
   $crimes = Crime::orderBy('created_at', 'desc')
     ->paginate(10);
     // ->get();
@@ -69,7 +71,7 @@
                                     <div class="progress-bar bg-success" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
                                   </div>
                                 </td>
-                                
+
                                 <td> {{ $crime->created_at }} </td>
                               </tr>
                             @endforeach
@@ -86,6 +88,7 @@
     </div>
     <div class="col-md-4">
       <div class="row">
+
         <div class="col-md-12 grid-margin">
           <div class="card">
             <div class="card-body">
@@ -96,10 +99,10 @@
                   @foreach($locations as $locs)
 
                     <div class="d-flex w-100 pt-2 mt-4">
-                      <p class="mb-0 font-weight-semibold">{{ $locs->location }}</p>
+                      <p class="mb-0 font-weight-semibold">{{ $locs->name }}</p>
                       <div class="wrapper ml-auto d-flex align-items-center">
-                        <p class="font-weight-semibold mb-0">{{ $locs->country }}</p>
-                        <p class="ml-1 mb-0"> {{ $locs->ip }} </p>
+                        <p class="font-weight-semibold mb-0">{{ 'Uganda' }}</p>
+                        {{-- <p class="ml-1 mb-0"> {{ $locs->ip }} </p> --}}
                       </div>
                     </div>
                     @endforeach
@@ -111,22 +114,7 @@
             </div>
           </div>
         </div>
-        {{-- <div class="col-md-12 grid-margin">
-          <div class="card">
-            <div class="card-body">
-              <h4 class="card-title mb-0">New Criminals</h4>
-              <div class="d-flex mt-3 py-2 border-bottom">
-                <img class="img-sm rounded-circle" src="assets/images/robber.png" alt="profile image">
-                <div class="wrapper ml-2">
-                  <p class="mb-n1 font-weight-semibold">Ray Douglas</p>
-                  <small>crime</small>
-                </div>
-                <small class="text-muted ml-auto">1 Hours ago</small>
-              </div>
-              
-            </div>
-          </div>
-        </div> --}}
+
       </div>
     </div>
   </div>

@@ -1,5 +1,6 @@
 @php
-
+    use App\location_m;
+    $locs = location_m::all();
 @endphp
 
 <div class="row">
@@ -18,11 +19,6 @@
                 </div>
 
                 <div class="form-group">
-                  {{-- <label for="exampleInputEmail1">Crime</label> --}}
-                  <input type="hidden" name="location" value="{{ session('location') }}" required class="form-control" placeholder="ex: robery">
-                </div>
-
-                <div class="form-group">
                   <label for="exampleInputPassword1">Select Category</label>
                   <select name="cat" required class="form-control">
                       <option value="" disabled selected>Select Crime Category</option>
@@ -33,6 +29,20 @@
                       @endif
                   </select>
                 </div>
+
+                 <div class="form-group">
+                  <label for="exampleInputPassword1">Select Location</label>
+                  <select name="location" required class="form-control">
+                      <option value="" disabled selected>Select Location</option>
+                      @if(count($locs) > 0)
+                        @foreach($locs as $loc)
+                          <option value="{{ $loc->name }}">{{ $loc->name }}</option>
+                        @endforeach
+                      @endif
+                  </select>
+                </div>
+
+
                 <div class="form-group">
                     <label for="exampleTextarea1">Describe the Crime</label>
                     <textarea name="description" required class="form-control" placeholder="Enter all the details you can find about the incident which may include number of casualties that might have been involved" id="exampleTextarea1" rows="2"></textarea>

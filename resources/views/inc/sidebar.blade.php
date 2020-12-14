@@ -51,9 +51,6 @@
             <span class="menu-title">Locations</span>
           </a>
         </li>
-
-
-
       @endif
       <li class="nav-item">
         {{-- <a  href="{{ url('/') }}"> --}}

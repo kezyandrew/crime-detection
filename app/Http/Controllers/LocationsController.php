@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
+use App\location_m;
+
 class LocationsController extends Controller
 {
     /**
@@ -20,6 +22,11 @@ class LocationsController extends Controller
     public function index()
     {
         //
+
+
+        $locations_m = location_m::all();
+        return view('locations')
+            ->with('locations', $locations_m);
     }
 
     /**
@@ -41,6 +48,26 @@ class LocationsController extends Controller
     public function store(Request $request)
     {
         //
+        try {
+            $lm = new location_m;
+            $lm->name = $request->name;
+            if ($lm->save()){
+
+                return back();
+            }
+        } catch (\Exception  $th) {
+            if ($th->getCode() == '230001'){
+
+                return back()
+                    ->with('error', 'location already exists');
+            }
+
+            return back()
+                    ->with('error', 'location already exists');
+        }
+
+
+        return $request;
     }
 
     /**

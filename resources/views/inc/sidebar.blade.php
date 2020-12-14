@@ -44,6 +44,16 @@
             <span class="menu-title">Categories</span>
           </a>
         </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="{{ url('/locations') }}">
+            <i class="menu-icon typcn typcn-shopping-bag"></i>
+            <span class="menu-title">Locations</span>
+          </a>
+        </li>
+
+
+
       @endif
       <li class="nav-item">
         {{-- <a  href="{{ url('/') }}"> --}}
@@ -59,7 +69,7 @@
           </form>
         </a>
       </li>
-      
-      
+
+
     </ul>
   </nav>

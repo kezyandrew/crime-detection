@@ -1,3 +1,7 @@
+@php
+
+@endphp
+
 <div class="row">
     <div class="col-md-6 d-flex align-items-stretch grid-margin">
       <div class="row flex-grow">
@@ -39,7 +43,7 @@
             </div>
           </div>
         </div>
-         
+
       </div>
     </div>
       <div class="col-md-6 grid-margin stretch-card">
@@ -68,5 +72,5 @@
           </div>
         </div>
       </div>
-    
+
   </div>

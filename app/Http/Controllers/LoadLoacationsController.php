@@ -22,7 +22,7 @@ class LoadLoacationsController extends Controller
         // $response = $client->request('POST', 'https://www.googleapis.com/geolocation/v1/geolocate?key=AIzaSyAxPyBRZtDj7ssvtYE5_ExKC1aIgfYX_LU');
         // $data = $response->getBody()->getContents();
         // $json = json_decode($response->getBody());
-        
+
         $url = "https://www.googleapis.com/geolocation/v1/geolocate?key=AIzaSyAxPyBRZtDj7ssvtYE5_ExKC1aIgfYX_LU";
         $ch = curl_init($url);
         curl_setopt($ch, CURLOPT_POST, 1);
@@ -44,12 +44,12 @@ class LoadLoacationsController extends Controller
         $temp = $request->ip();
         // return print_r($temp);
 
-        // if ($temp == "::1" || "127.0.0.1"){
-        //     $temp = '109.223.139.1';
-        // }
+        if ($temp == "::1" || "127.0.0.1"){
+            $temp = '109.223.139.1';
+        }
 
         $url = "http://api.ipstack.com/".$temp."?access_key=bf01f636b7ad6832e3e7a97ba16ccfab";
-        
+
         $response = Http::get($url);
         $data = $response->json();
 
@@ -58,7 +58,7 @@ class LoadLoacationsController extends Controller
             'region'=> $data['region_name'],
             // 'longitude'=> $data['longitude'],
             // 'latitude'=> $data['latitude']
-             ]);        
+             ]);
 
         $n = new Locations;
         $n->country = $data['country_name'];
@@ -70,6 +70,7 @@ class LoadLoacationsController extends Controller
         $n->created_By = Auth::user()->email;
 
         if($n->save()){
+            // return $n;
             return back();
         }
 

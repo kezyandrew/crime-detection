@@ -19,12 +19,12 @@
 <div class="col-md-6 middle">
     <div class="card-body">
         <h4 class="card-title">Start Your session</h4>
-        
+
       <p class="card-description">
 
         Click button below to start your session. <br>
         <b>Note: </b> <code>
-            Accept App to use your location if requested, for purposes of returning more accurate location details. 
+            Accept App to use your location if requested, for purposes of returning more accurate location details.
         </code>
       </p>
 
@@ -36,8 +36,8 @@
                 <i class="mdi mdi-home-outline"></i>
               </button>
         </form>
-        
-        
+
+
       </div>
     </div>
   </div>

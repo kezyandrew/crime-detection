@@ -43,3 +43,6 @@ Route::resource('locations', 'LocationsController');
 Route::resource('categories', 'CategoriesController');
 Route::get('/load', 'LoadLoacationsController@make')->name('make');
 Route::get('/start', 'HomeController@startSession')->name('startSession');
+
+
+Route::get('charts', 'ChartController@index')->name('index');

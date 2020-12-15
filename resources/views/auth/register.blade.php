@@ -44,6 +44,19 @@
 
                 <div class="form-group">
                   <div class="input-group">
+                    <input id="email" type="text" placeholder="NIN Or ID Number" class="form-control @error('name') is-invalid @enderror" name="NIN" required>
+                    <div class="input-group-append">
+                      <span class="input-group-text">
+                        <i class="mdi mdi-check-circle-outline"></i>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+
+
+
+                <div class="form-group">
+                  <div class="input-group">
                     <input id="password" placeholder="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
                         @error('password')
                             <span class="invalid-feedback" role="alert">

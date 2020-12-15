@@ -3,9 +3,12 @@
 use App\Crime;
 use App\Category;
 use App\Locations;
+use App\location_m;
+
 use GeoIp2\Record\Location;
 
-function get_stats(){   
+
+function get_stats(){
         // the stats array;
         $stats = array();
 
@@ -33,7 +36,7 @@ function get_stats(){
                 'category'=>$value
             );
             array_push($stats, $risk);
-           
+
         }
 
 
@@ -41,10 +44,10 @@ function get_stats(){
         $current_location = Crime::where([
             'location'=>session('location')
         ])->get();
-        
-        
+
+
         $current_location_num = count($current_location);
-        
+
         $risk = ($current_location_num / $all_num) * 100;
 
         return $stats;
@@ -67,4 +70,14 @@ function new_locations(){
         // ->paginate(3);
 
     return $location;
+}
+
+function total_crimes(){
+    $crimes = Crime::all()->count();
+    return $crimes;
+}
+
+function total_locations(){
+    $locs = location_m::all()->count();
+    return $locs;
 }

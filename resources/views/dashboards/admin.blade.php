@@ -22,15 +22,6 @@
       <div class="page-header-toolbar">
 
         <div class="filter-wrapper">
-          {{-- <div class="dropdown toolbar-item">
-            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownsorting" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Sort Since</button>
-            <div class="dropdown-menu" aria-labelledby="dropdownsorting">
-              <a class="dropdown-item" href="#">Today</a>
-              <a class="dropdown-item" href="#">This Week</a>
-              <a class="dropdown-item" href="#">This Month</a>
-              <a class="dropdown-item" href="#">This Year</a>
-            </div>
-          </div> --}}
 
           {{-- <a href="#" class="advanced-link toolbar-item">Advanced Options</a> --}}
         </div>
@@ -62,6 +53,8 @@
       </div>
     </div>
   </div>
+
+  @include('dashboards.stats')
 
   @include('admin.reports', ['categories'=>$categories, 'crimes'=>$crimes, 'locations'=>$locations])
 

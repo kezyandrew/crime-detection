@@ -15,7 +15,7 @@ class CreateLocationMsTable extends Migration
     {
         Schema::create('location_ms', function (Blueprint $table) {
             $table->id();
-            $table->longText('name', 250)->unique();
+            $table->string('name')->unique();
             $table->timestamps();
         });
     }
